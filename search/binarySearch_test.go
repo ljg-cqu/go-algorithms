@@ -35,6 +35,8 @@ func TestBinarySearch(t *testing.T) {
 			t.Parallel()
 			gotIndex, gotErr := BinarySearch(c.inputArr, c.inputTarget, c.inputLowIndex, c.inputHighIndex)
 			require.True(t, gotIndex == c.want && errors.Is(gotErr, c.wantErr))
+			gotIndex, gotErr = BinarySearchRec(c.inputArr, c.inputTarget, c.inputLowIndex, c.inputHighIndex)
+			require.True(t, gotIndex == c.want && errors.Is(gotErr, c.wantErr))
 		})
 	}
 }
