@@ -31,8 +31,18 @@ func TestStackDefault(t *testing.T) {
 	require.Equal(t, 1, Count())
 
 	Clear()
-	for i := 0; i < 100; i++ {
+	for i := 0; i < 5; i++ {
 		Push(i)
 	}
-	require.Equal(t, 100, Count())
+	require.Equal(t, 5, Count())
+
+	elems := make([]int, 0, 5)
+	for {
+		e := Pop()
+		if e == nil {
+			break
+		}
+		elems = append(elems, e.(int))
+	}
+	require.Equal(t, []int{4, 3, 2, 1, 0}, elems)
 }
