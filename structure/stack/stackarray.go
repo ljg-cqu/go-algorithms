@@ -22,18 +22,14 @@ func (s *stackArray) Pop() any {
 }
 
 func (s *stackArray) Peak() any {
-	if s.Empty() {
+	if len(*s) == 0 {
 		return nil
 	}
 	return (*s)[len(*s)-1]
 }
 
-func (s *stackArray) Len() int {
+func (s *stackArray) Count() int {
 	return len(*s)
-}
-
-func (s *stackArray) Cap() int {
-	return cap(*s)
 }
 
 func (s *stackArray) Empty() bool {
@@ -41,7 +37,5 @@ func (s *stackArray) Empty() bool {
 }
 
 func (s *stackArray) Clear() {
-	if !s.Empty() {
-		*s = make(stackArray, 0, 64)
-	}
+	*s = make(stackArray, 0, 64)
 }

@@ -27,14 +27,9 @@ func Peak() any {
 	return defaultStack.Peak()
 }
 
-func Len() int {
+func Count() int {
 	initDefaultStack()
-	return defaultStack.Len()
-}
-
-func Cap() int {
-	initDefaultStack()
-	return defaultStack.Cap()
+	return defaultStack.Count()
 }
 
 func Empty() bool {
