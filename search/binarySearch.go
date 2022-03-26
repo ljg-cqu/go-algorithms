@@ -2,13 +2,10 @@ package search
 
 import (
 	"github.com/juju/errors"
+	"github.com/ljg-cqu/gotypes"
 )
 
-type Number interface {
-	int | int32 | int64 | float32 | float64
-}
-
-func BinarySearch[T Number](array []T, target T, lowIndex, highIndex int) (int, error) {
+func BinarySearch[T gotypes.Number](array []T, target T, lowIndex, highIndex int) (int, error) {
 	if len(array) == 0 {
 		return -1, errors.NotFoundf("length of input array is zero")
 	}
@@ -32,7 +29,7 @@ func BinarySearch[T Number](array []T, target T, lowIndex, highIndex int) (int, 
 	return -1, errors.NotFoundf("%v", target)
 }
 
-func BinarySearchRec[T Number](array []T, target T, lowIndex, highIndex int) (int, error) {
+func BinarySearchRec[T gotypes.Number](array []T, target T, lowIndex, highIndex int) (int, error) {
 	if len(array) == 0 {
 		return -1, errors.NotFoundf("length of input array is zero")
 	}
@@ -44,7 +41,7 @@ func BinarySearchRec[T Number](array []T, target T, lowIndex, highIndex int) (in
 	return binarySearchRec(array, target, lowIndex, highIndex)
 }
 
-func binarySearchRec[T Number](array []T, target T, lowIndex, highIndex int) (int, error) {
+func binarySearchRec[T gotypes.Number](array []T, target T, lowIndex, highIndex int) (int, error) {
 	if lowIndex <= highIndex {
 		midIndex := lowIndex + (highIndex-lowIndex)/2
 		switch {

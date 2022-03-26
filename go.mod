@@ -4,6 +4,7 @@ go 1.18
 
 require (
 	github.com/juju/errors v0.0.0-20220324005906-d8c5072c94ab
+	github.com/ljg-cqu/gotypes v0.0.0-20220326092345-25b9be31fb4d
 	github.com/stretchr/testify v1.7.1
 )
 
