@@ -55,10 +55,6 @@ func (s *doublyLinkedList) Front() any {
 		return nil
 	}
 
-	if s.nodes == 1 {
-
-	}
-
 	node := s.head.Next
 	s.head.Next = node.Next
 	if node.Next != nil {
