@@ -8,7 +8,7 @@ type singlyLinkedList struct {
 	tail  *gotypes.Node
 }
 
-func NewSinglyLinkedList() gotypes.LinkedListContainer {
+func NewSinglyLinkedList() gotypes.LinkedList {
 	return &singlyLinkedList{head: new(gotypes.Node)}
 }
 
@@ -27,12 +27,11 @@ func (s *singlyLinkedList) Back() any {
 		return nil
 	}
 
-	defer func() { s.nodes-- }()
-
 	if s.nodes == 1 {
 		val := s.head.Next.Val
 		s.head.Next = nil
 		s.tail = nil
+		s.nodes--
 		return val
 	}
 
@@ -42,6 +41,7 @@ func (s *singlyLinkedList) Back() any {
 	e := s.tail.Val
 	p.Next = nil
 	s.tail = p
+	s.nodes--
 	return e
 }
 
