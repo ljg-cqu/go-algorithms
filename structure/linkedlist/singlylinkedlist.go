@@ -1,6 +1,8 @@
 package linkedlist
 
-import "github.com/ljg-cqu/gotypes"
+import (
+	"github.com/ljg-cqu/gotypes"
+)
 
 type singlyLinkedList struct {
 	nodes int
@@ -71,17 +73,58 @@ func (s *singlyLinkedList) PushBack(val any) {
 }
 
 func (s *singlyLinkedList) Reverse() {
-	var hHead = new(gotypes.Node)
-	for first := s.head.Next; first != nil; {
+	////approach 1:
+	//if s.nodes < 2 {
+	//	return
+	//}
+	//
+	//first := s.head.Next
+	//
+	//var hHead = new(gotypes.Node)
+	//var hTail = first
+	//for first != nil {
+	//	second := first.Next
+	//
+	//	first.Next = hHead.Next
+	//	hHead.Next = first
+	//
+	//	first = second
+	//}
+	//
+	//s.head.Next = hHead.Next
+	//s.tail = hTail
+	//
+	//if s.nodes < 2 {
+	//	return
+	//}
+
+	//// approach 2:
+	//first := s.head.Next
+	//s.tail = first
+	//s.head.Next = nil
+	//s.reverseRec(first)
+
+	// approach 3:
+	first := s.head.Next
+	s.tail = first
+	s.head.Next = nil
+
+	for first != nil {
 		second := first.Next
-
-		first.Next = hHead.Next
-		hHead.Next = first
-
+		first.Next = s.head.Next
+		s.head.Next = first
 		first = second
 	}
+}
 
-	s.head.Next = hHead.Next
+func (s *singlyLinkedList) reverseRec(first *gotypes.Node) {
+	if first == nil {
+		return
+	}
+	second := first.Next
+	first.Next = s.head.Next
+	s.head.Next = first
+	s.reverseRec(second)
 }
 
 func (s *singlyLinkedList) Count() int {
